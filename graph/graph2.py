@@ -427,53 +427,53 @@ if __name__ == "__main__":
 
     # 可选的绘图功能
     #draw_graph(main_app, "workflow.png")
-    draw_workflow_graph(main_app)
+    #draw_workflow_graph(main_app)
 
-    # # 测试不同问题
-    # test_queries = [
-    #     "你是谁",
-    #     "什么是半导体封装？",
-    #     "你好",
-    #     "晶圆级封装的优势是什么？"
-    # ]
-    #
-    # for query in test_queries:
-    #     print("\n" + "=" * 80)
-    #     print(f"测试查询: {query}")
-    #     print("=" * 80)
-    #
-    #     # 正确初始化状态
-    #     initial_state = {
-    #         "messages": [HumanMessage(content=query)],  # 包含用户消息
-    #         "should_retrieve": False,  # 默认值
-    #         "is_relevant": False,  # 默认值
-    #         "final_answer": ""  # 初始为空
-    #     }
-    #
-    #     try:
-    #         # 运行工作流
-    #         result = main_app.invoke(initial_state)
-    #
-    #         print(f"\n最终结果:")
-    #         print("-" * 40)
-    #
-    #         # 检查是否有最终答案
-    #         if "final_answer" in result and result["final_answer"]:
-    #             print(f"最终回答: {result['final_answer'][:300]}...")
-    #         else:
-    #             print("未生成最终答案，工作流可能提前结束")
-    #
-    #         # 打印最终状态摘要
-    #         print(f"\n最终状态摘要:")
-    #         print(f"是否执行检索: {result.get('should_retrieve', 'N/A')}")
-    #         print(f"文档是否相关: {result.get('is_relevant', 'N/A')}")
-    #         print(f"消息数量: {len(result.get('messages', []))}")
-    #
-    #     except Exception as e:
-    #         print(f"执行出错: {e}")
-    #         import traceback
-    #
-    #         traceback.print_exc()
-    #
-    #     print("\n" + "-" * 80)
+    # 测试不同问题
+    test_queries = [
+        "你是谁",
+        "什么是半导体封装？",
+        "你好",
+        "晶圆级封装的优势是什么？"
+    ]
+
+    for query in test_queries:
+        print("\n" + "=" * 80)
+        print(f"测试查询: {query}")
+        print("=" * 80)
+
+        # 正确初始化状态
+        initial_state = {
+            "messages": [HumanMessage(content=query)],  # 包含用户消息
+            "should_retrieve": False,  # 默认值
+            "is_relevant": False,  # 默认值
+            "final_answer": ""  # 初始为空
+        }
+
+        try:
+            # 运行工作流
+            result = main_app.invoke(initial_state)
+
+            print(f"\n最终结果:")
+            print("-" * 40)
+
+            # 检查是否有最终答案
+            if "final_answer" in result and result["final_answer"]:
+                print(f"最终回答: {result['final_answer'][:300]}...")
+            else:
+                print("未生成最终答案，工作流可能提前结束")
+
+            # 打印最终状态摘要
+            print(f"\n最终状态摘要:")
+            print(f"是否执行检索: {result.get('should_retrieve', 'N/A')}")
+            print(f"文档是否相关: {result.get('is_relevant', 'N/A')}")
+            print(f"消息数量: {len(result.get('messages', []))}")
+
+        except Exception as e:
+            print(f"执行出错: {e}")
+            import traceback
+
+            traceback.print_exc()
+
+        print("\n" + "-" * 80)
 
